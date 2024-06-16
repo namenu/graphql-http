@@ -18,11 +18,25 @@
     (let [res (http/post "http://localhost:3000/graphql"
                          {:body         (json/write-str {:query "{ __typename }"})
                           :content-type :json
-                          :accept       :json})]
+                          :accept       :json})
+          body (json/read-str (:body res) :key-fn keyword)]
       (is (= 200 (:status res)))
-      (is (= nil (get-in res [:body :errors]))))))
+      (is (= nil (:errors body))))))
+
+(deftest test-28B9
+  (testing "MUST allow map {variables} parameter when accepting application/json"
+    (let [query "query Type($name: String!) { __type(name: $name) { name } }"
+          res   (http/post "http://localhost:3000/graphql"
+                           {:body         (json/write-str {:query     query
+                                                           :variables {:name "someType"}})
+                            :content-type :json
+                            :accept       :json})
+          body (json/read-str (:body res) :key-fn keyword)]
+      (is (= 200 (:status res)))
+      (is (= nil (:errors body))))))
 
 (comment
   (test-4655)
   (test-13EE)
+  (test-28B9)
   )

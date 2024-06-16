@@ -4,10 +4,9 @@
 
 <ul>
 <li><b>60</b> audits in total</li>
-<li><span style="font-family: monospace">✅</span> <b>27</b> pass</li>
+<li><span style="font-family: monospace">✅</span> <b>28</b> pass</li>
 <li><span style="font-family: monospace">💡</span> <b>26</b> notices (suggestions)</li>
 <li><span style="font-family: monospace">⚠️</span> <b>6</b> warnings (optional)</li>
-<li><span style="font-family: monospace">❌</span> <b>1</b> errors (required)</li>
 </ul>
 
 <h2>Passing</h2>
@@ -31,6 +30,7 @@
 <li><code>94B2</code> SHOULD allow null {extensions} parameter when accepting application/graphql-response+json</li>
 <li><code>0222</code> MUST allow null {extensions} parameter when accepting application/json</li>
 <li><code>2EA1</code> SHOULD allow map {variables} parameter when accepting application/graphql-response+json</li>
+<li><code>28B9</code> MUST allow map {variables} parameter when accepting application/json</li>
 <li><code>428F</code> SHOULD allow map {extensions} parameter when accepting application/graphql-response+json</li>
 <li><code>1B7A</code> MUST allow map {extensions} parameter when accepting application/json</li>
 <li><code>8764</code> MAY use 4xx or 5xx status codes if parameters are invalid</li>
@@ -54,7 +54,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "4146",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -90,7 +90,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "4076",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -109,7 +109,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "4076",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -145,7 +145,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "3512",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -164,7 +164,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "3512",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -183,7 +183,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "4076",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -202,7 +202,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "4076",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -413,7 +413,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
   "body": {
     "url": "/graphql",
     "status": "500",
-    "servlet": "org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-4a65a1a9",
+    "servlet": "org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-25de3688",
     "message": "java.lang.AssertionError: Assert failed: (string? query)",
     "cause0": "java.lang.AssertionError: Assert failed: (string? query)"
   }
@@ -515,9 +515,8 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "26146",
-    "connection": "close",
-    "cache-control": "must-revalidate,no-cache,no-store"
+    "content-length": "26184",
+    "connection": "close"
   },
   "body": "<html omitted>"
 }
@@ -533,12 +532,9 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
   "headers": {
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
-    "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "26142",
-    "connection": "close",
-    "cache-control": "must-revalidate,no-cache,no-store"
+    "connection": "close"
   },
-  "body": "<html omitted>"
+  "body": null
 }
 </code></pre>
 </details>
@@ -553,7 +549,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "743",
+    "content-length": "3512",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -755,41 +751,3 @@ The server <i>SHOULD</i> support these, but is not required.
 </li>
 </ol>
 
-<h2>Errors</h2>
-The server <b>MUST</b> support these.
-<ol>
-<li><code>28B9</code> MUST allow map {variables} parameter when accepting application/json
-<details>
-<summary>Response body execution result has a property "errors"</summary>
-<pre><code class="lang-json">{
-  "statusText": "OK",
-  "status": 200,
-  "headers": {
-    "transfer-encoding": "chunked",
-    "server": "Jetty(11.0.20)",
-    "date": "<timestamp>",
-    "content-type": "application/json"
-  },
-  "body": {
-    "errors": [
-      {
-        "message": "No value was provided for variable `name', which is non-nullable.",
-        "locations": [
-          {
-            "line": 1,
-            "column": 30
-          }
-        ],
-        "extensions": {
-          "variable-name": "name",
-          "field-name": "__type",
-          "argument": "__type.name"
-        }
-      }
-    ]
-  }
-}
-</code></pre>
-</details>
-</li>
-</ol>

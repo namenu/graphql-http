@@ -41,8 +41,9 @@
 (defn handle-post [request]
   {:status  200
    :headers {"Content-Type" "application/json"}
-   :body    (let [query  (get-in request [:body-params :query])
-                  result (execute star-wars-schema query nil nil)]
+   :body    (let [query     (get-in request [:body-params :query])
+                  variables (get-in request [:body-params :variables])
+                  result    (execute star-wars-schema query variables nil)]
               (json/write-str result))})
 
 (def router

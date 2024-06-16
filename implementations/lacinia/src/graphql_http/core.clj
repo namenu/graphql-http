@@ -35,13 +35,15 @@
   {:status  200
    :headers {"Content-Type" "application/json"}
    :body    (let [query  (get-in request [:query-params :query])
-                  _      (clojure.pprint/pprint (:query-params request))
                   result (execute star-wars-schema query nil nil)]
               (json/write-str result))})
 
 (defn handle-post [request]
-  {:status 200
-   :headers {"Content-Type" "application/json"}})
+  {:status  200
+   :headers {"Content-Type" "application/json"}
+   :body    (let [query  (get-in request [:body-params :query])
+                  result (execute star-wars-schema query nil nil)]
+              (json/write-str result))})
 
 (def router
   (ring/router
@@ -49,9 +51,8 @@
                         :middleware [parameters-middleware]}
                  :post {:handler #'handle-post}}]
 
-    {:data {:muuntaja m/instance
-            :middleware [muuntaja/format-middleware]}}
-    ))
+    {:data {:muuntaja   m/instance
+            :middleware [muuntaja/format-middleware]}}))
 
 (def app
   (ring/ring-handler router))

@@ -15,10 +15,10 @@
 
 (deftest test-13EE
   (testing "MUST allow string {query} parameter when accepting application/json"
-    (let [res (http/post "http://localhost:3000/graphql"
-                         {:body         (json/write-str {:query "{ __typename }"})
-                          :content-type :json
-                          :accept       :json})
+    (let [res  (http/post "http://localhost:3000/graphql"
+                          {:body         (json/write-str {:query "{ __typename }"})
+                           :content-type :json
+                           :accept       :json})
           body (json/read-str (:body res) :key-fn keyword)]
       (is (= 200 (:status res)))
       (is (= nil (:errors body))))))
@@ -31,12 +31,22 @@
                                                            :variables {:name "someType"}})
                             :content-type :json
                             :accept       :json})
-          body (json/read-str (:body res) :key-fn keyword)]
+          body  (json/read-str (:body res) :key-fn keyword)]
       (is (= 200 (:status res)))
       (is (= nil (:errors body))))))
 
-(comment
-  (test-4655)
-  (test-13EE)
-  (test-28B9)
-  )
+(deftest test-22EB
+  (testing "SHOULD accept application/graphql-response+json and match the content-type"
+    (let [res (http/post "http://localhost:3000/graphql"
+                         {:body         (json/write-str {:query "{ __typename }"})
+                          :content-type :json
+                          :accept       "application/graphql-response+json"})]
+      (is (= 200 (:status res)))
+      (is (= "application/graphql-response+json" (get-in res [:headers "content-type"]))))))
+
+  (comment
+    (test-4655)
+    (test-13EE)
+    (test-28B9)
+    (test-22EB)
+    )

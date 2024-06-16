@@ -5,6 +5,7 @@
             [com.walmartlabs.lacinia.schema :as schema]
             [com.walmartlabs.lacinia.util :refer [inject-resolvers]]
             [muuntaja.core :as m]
+            [muuntaja.format.json :as json-format]
             [reitit.ring :as ring]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [reitit.ring.middleware.parameters :refer [parameters-middleware]]
@@ -39,12 +40,25 @@
               (json/write-str result))})
 
 (defn handle-post [request]
-  {:status  200
-   :headers {"Content-Type" "application/json"}
-   :body    (let [query     (get-in request [:body-params :query])
-                  variables (get-in request [:body-params :variables])
-                  result    (execute star-wars-schema query variables nil)]
-              (json/write-str result))})
+  (let [header-accept (get-in request [:headers "accept"])
+        content-type  (cond
+                        (= header-accept "application/graphql-response+json") "application/graphql-response+json"
+                        :else "application/json")]
+    (prn header-accept)
+    {:status  200
+     :headers {"Content-Type" content-type}
+     :body    (let [query     (get-in request [:body-params :query])
+                    variables (get-in request [:body-params :variables])
+                    result    (execute star-wars-schema query variables nil)]
+                (json/write-str result))}))
+
+(def muuntaja
+  (m/create
+    (assoc-in
+      m/default-options
+      [:formats "application/graphql-response+json"]
+      {:decoder [json-format/decoder {:decode-key-fn true}]
+       :encoder [json-format/encoder]})))
 
 (def router
   (ring/router
@@ -52,7 +66,7 @@
                         :middleware [parameters-middleware]}
                  :post {:handler #'handle-post}}]
 
-    {:data {:muuntaja   m/instance
+    {:data {:muuntaja   muuntaja
             :middleware [muuntaja/format-middleware]}}))
 
 (def app

@@ -4,13 +4,14 @@
 
 <ul>
 <li><b>60</b> audits in total</li>
-<li><span style="font-family: monospace">✅</span> <b>28</b> pass</li>
+<li><span style="font-family: monospace">✅</span> <b>29</b> pass</li>
 <li><span style="font-family: monospace">💡</span> <b>26</b> notices (suggestions)</li>
-<li><span style="font-family: monospace">⚠️</span> <b>6</b> warnings (optional)</li>
+<li><span style="font-family: monospace">⚠️</span> <b>5</b> warnings (optional)</li>
 </ul>
 
 <h2>Passing</h2>
 <ol>
+<li><code>22EB</code> SHOULD accept application/graphql-response+json and match the content-type</li>
 <li><code>4655</code> MUST accept application/json and match the content-type</li>
 <li><code>47DE</code> SHOULD accept */* and use application/json for the content-type</li>
 <li><code>80D8</code> SHOULD assume application/json content-type when accept is missing</li>
@@ -54,7 +55,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "4146",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -90,7 +91,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "4076",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -109,7 +110,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "4076",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -145,7 +146,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "3512",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -164,7 +165,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "3512",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -183,7 +184,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "4076",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -202,7 +203,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "4076",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -515,8 +516,9 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "26184",
-    "connection": "close"
+    "content-length": "27282",
+    "connection": "close",
+    "cache-control": "must-revalidate,no-cache,no-store"
   },
   "body": "<html omitted>"
 }
@@ -532,9 +534,12 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
   "headers": {
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
-    "connection": "close"
+    "content-type": "text/html;charset=iso-8859-1",
+    "content-length": "27282",
+    "connection": "close",
+    "cache-control": "must-revalidate,no-cache,no-store"
   },
-  "body": null
+  "body": "<html omitted>"
 }
 </code></pre>
 </details>
@@ -549,7 +554,7 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
     "content-type": "text/html;charset=iso-8859-1",
-    "content-length": "3512",
+    "content-length": "743",
     "connection": "close",
     "cache-control": "must-revalidate,no-cache,no-store"
   },
@@ -563,27 +568,6 @@ The server <i>MAY</i> support these, but are truly optional. These are suggestio
 <h2>Warnings</h2>
 The server <i>SHOULD</i> support these, but is not required.
 <ol>
-<li><code>22EB</code> SHOULD accept application/graphql-response+json and match the content-type
-<details>
-<summary>Response header content-type does not contain application/graphql-response+json</summary>
-<pre><code class="lang-json">{
-  "statusText": "OK",
-  "status": 200,
-  "headers": {
-    "transfer-encoding": "chunked",
-    "server": "Jetty(11.0.20)",
-    "date": "<timestamp>",
-    "content-type": "application/json"
-  },
-  "body": {
-    "data": {
-      "__typename": "Query"
-    }
-  }
-}
-</code></pre>
-</details>
-</li>
 <li><code>865D</code> SHOULD use 4xx or 5xx status codes on document parsing failure when accepting application/graphql-response+json
 <details>
 <summary>Response status is not between 400 and 599</summary>
@@ -594,7 +578,7 @@ The server <i>SHOULD</i> support these, but is not required.
     "transfer-encoding": "chunked",
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
-    "content-type": "application/json"
+    "content-type": "application/graphql-response+json"
   },
   "body": {
     "errors": [
@@ -630,7 +614,7 @@ The server <i>SHOULD</i> support these, but is not required.
     "transfer-encoding": "chunked",
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
-    "content-type": "application/json"
+    "content-type": "application/graphql-response+json"
   },
   "body": {
     "errors": [
@@ -666,7 +650,7 @@ The server <i>SHOULD</i> support these, but is not required.
     "transfer-encoding": "chunked",
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
-    "content-type": "application/json"
+    "content-type": "application/graphql-response+json"
   },
   "body": {
     "errors": [
@@ -702,7 +686,7 @@ The server <i>SHOULD</i> support these, but is not required.
     "transfer-encoding": "chunked",
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
-    "content-type": "application/json"
+    "content-type": "application/graphql-response+json"
   },
   "body": {
     "errors": [
@@ -738,7 +722,7 @@ The server <i>SHOULD</i> support these, but is not required.
     "transfer-encoding": "chunked",
     "server": "Jetty(11.0.20)",
     "date": "<timestamp>",
-    "content-type": "application/json"
+    "content-type": "application/graphql-response+json"
   },
   "body": {
     "data": {

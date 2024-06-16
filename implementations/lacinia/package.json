@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "lacinia",
+  "url": "https://implementation-name.example",
+  "scripts": {
+    "start": "clojure -M -m graphql-http.core"
+  }
+}
